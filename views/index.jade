@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  video(id='vid', class="video-js", controls=true, preload="auto", width="640", height="264")
+    source(id='src', src='//localhost:8000/video.mp4')
+  //- script.
+  //-   var video = document.getElementById('src')
+  //-   video.src = "blob:http://localhost:3000/66c5be60-cbf6-452e-aaa4-aa33ecfe9d71"
+
+//- URL.createObjectURL(new Blob(['//localhost:8000/video.mp4']))
+//- "blob:http://localhost:3000/6fbb1a28-9f27-489e-9afa-f58df7830ab6"
+//- URL.createObjectURL(new Blob(['http://localhost:8000/video.mp4']))
+//- "blob:http://localhost:3000/5785d735-bf90-426e-8d65-a5fa7ea48f03"
