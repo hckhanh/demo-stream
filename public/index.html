@@ -1,19 +1,53 @@
+<!DOCTYPE html>
+<html>
+
 <head>
   <link href="http://vjs.zencdn.net/6.2.0/video-js.css" rel="stylesheet">
 
   <!-- If you'd like to support IE8 -->
   <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
+  <script src='https://content.jwplatform.com/libraries/L7fM8L0h.js'></script>
+  <script>
+    jwplayer.key = 'YOUR_KEY';
+  </script>
 </head>
 
 <body>
-  <video id="my-video" class="video-js" controls preload="auto" width="640" height="264" poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
-    <source src="https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8" type="application/x-mpegURL">
+  <video id="my-video" class="video-js" controls preload="auto" width="640" height="264" poster="http://genknews.genkcdn.vn/2017/000-s8-03-1493134297305.jpg"
+    data-setup="{}">
+    <source src="http://localhost:3000/video.m3u8" type="application/x-mpegURL">
     <p class="vjs-no-js">
       To view this video please enable JavaScript, and consider upgrading to a web browser that
       <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
     </p>
   </video>
 
+  <div id="player">Loading the player...</div>
+
+  <script>
+    // Setup the player
+    const player = jwplayer('player').setup({
+      file: 'http://localhost:3000/video.m3u8',
+      // volume: 10
+    });
+// videojs('my-video', {techOrder: ['flash']});
+    // // Listen to an event
+    // player.on('pause', (event) => {
+    //   alert('Why did my user pause their video instead of watching it?');
+    // });
+
+    // // Call the API
+    // const bumpIt = () => {
+    //   const vol = player.getVolume();
+    //   player.setVolume(vol + 10);
+    // }
+    // document.querySelector('#bumpit').onclick = () => { bumpIt(); }
+  </script>
+
   <script src="http://vjs.zencdn.net/6.2.0/video.js"></script>
+  <!--<script src="https://unpkg.com/videojs-flash/dist/videojs-flash.js"></script>-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.8.0/videojs-contrib-hls.js"></script>
 </body>
+
+</html>
