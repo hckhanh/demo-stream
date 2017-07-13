@@ -55,7 +55,7 @@ fs.mkdir('./videos', function () {
     // set h264 preset
     // .addOption('preset','superfast')
     // set target codec
-    .videoCodec('libx264')
+    // .videoCodec('libx264')
     // set audio bitrate
     .audioBitrate('128k')
     // set audio codec
