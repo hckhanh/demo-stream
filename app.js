@@ -27,6 +27,12 @@ app.use(express.static(path.join(__dirname, 'videos')));
 // app.use('/', index);
 app.use('/users', users);
 
+app.get('/convert', (req, res) => {
+  ffmpeg('./video.mp4')
+    .format('hls')
+    .save('./videos/video.m3u8')
+})
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
@@ -44,14 +50,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-// require('./stream');
-
-// Generate HLS segments from video file
-setTimeout(() => {
-ffmpeg('./video.mp4')
-  .format('hls')
-  .save('./videos/video.m3u8')
-}, 1000)
 
 module.exports = app;
