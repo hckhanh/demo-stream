@@ -50,7 +50,7 @@ console.log('Generate HSL segments from video file...')
 
 // Generate HLS segments from video file
 fs.mkdir('./videos', function () {
-  ffmpeg('./video.mp4').save('./videos/video.m3u8')
+  ffmpeg('./video.mp4').format('hls').save('./videos/video.m3u8')
 })
 
 module.exports = app;
