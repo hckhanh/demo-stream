@@ -4,9 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var fs = require('fs')
 var ffmpeg = require('fluent-ffmpeg');
 
-var index = require('./routes/index');
+// var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
@@ -27,12 +28,6 @@ app.use(express.static(path.join(__dirname, 'videos')));
 // app.use('/', index);
 app.use('/users', users);
 
-app.get('/convert', (req, res) => {
-  ffmpeg('./video.mp4')
-    .format('hls')
-    .save('./videos/video.m3u8')
-})
-
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
@@ -50,5 +45,12 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+console.log('Generate HSL segments from video file...')
+
+// Generate HLS segments from video file
+fs.mkdir('./videos', function () {
+  ffmpeg('./video.mp4').save('./videos/video.m3u8')
+})
 
 module.exports = app;
