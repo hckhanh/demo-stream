@@ -51,15 +51,16 @@ console.log('Generate HSL segments from video file...')
 // Generate HLS segments from video file
 fs.mkdir('./videos', function () {
   ffmpeg('./video.mp4')
+  // set output format
+    .format('m4v')
+    // set bitrate
     .videoBitrate(1024)
-    // set h264 preset
-    // .addOption('preset','superfast')
     // set target codec
-    // .videoCodec('libx264')
+    .videoCodec('libx264')
     // set audio bitrate
     .audioBitrate('128k')
     // set audio codec
-    // .audioCodec('libfaac')
+    .audioCodec('aac')
     // set number of audio channels
     .audioChannels(2)
     // set hls segments time
