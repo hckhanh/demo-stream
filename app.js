@@ -52,7 +52,7 @@ console.log('Generate HSL segments from video file...')
 fs.mkdir('./videos', function () {
   ffmpeg('./video.mp4')
   // set output format
-    .format('m4v')
+    .format('hls')
     // set bitrate
     .videoBitrate(1024)
     // set target codec
